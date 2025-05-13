@@ -145,3 +145,11 @@ if ($tipo == "reiniciar_password") {
     }
     echo json_encode($arr_Respuesta);
 }
+
+if ($tipo == "sent_email_password") {
+    $arr_Respuesta = array('status' =>false, 'msg' => 'Error_Sesion');
+    if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
+        $datos_sesion = $objSesion->buscarSesionLoginById($id_sesion);
+        print_r($datos_sesion);
+    }
+}
