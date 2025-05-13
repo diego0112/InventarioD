@@ -158,16 +158,18 @@ function generarfilastabla(item) {
     document.querySelector('#contenido_tabla').appendChild(nueva_fila);
 
 }
+
 async function registrar_usuario() {
     let dni = document.getElementById('dni').value;
     let apellidos_nombres = document.querySelector('#apellidos_nombres').value;
     let correo = document.querySelector('#correo').value;
     let telefono = document.querySelector('#telefono').value;
-    if (dni == "" || apellidos_nombres == "" ||correo == "" || telefono == "") {
+    let password = document.querySelector('#password').value;
+    if (dni == "" || apellidos_nombres == "" || correo == "" || telefono == "" || password == "") {
         Swal.fire({
             type: 'error',
             title: 'Error',
-            text: 'Campos vacíos...s',
+            text: 'Campos vacíos...',
             confirmButtonClass: 'btn btn-confirm mt-2',
             footer: ''
         })

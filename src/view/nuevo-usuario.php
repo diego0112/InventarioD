@@ -1,4 +1,4 @@
-<!-- start page title -->
+ <!-- start page title -->
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card">
@@ -25,14 +25,20 @@
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label for="telefono" class="col-3 col-form-label">Teléfono </label>
+                        <label for="telefono" class="col-3 col-form-label">Teléfono</label>
                         <div class="col-9">
                             <input type="text" class="form-control" id="telefono" name="telefono">
                         </div>
-                    </div>         
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="password" class="col-3 col-form-label">Contraseña</label>
+                        <div class="col-9">
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                    </div>
                     <div class="form-group mb-0 justify-content-end row text-center">
                         <div class="col-12">
-                        <a href="<?php echo BASE_URL;?>usuarios" class="btn btn-light waves-effect waves-light">Regresar</a>
+                            <a href="<?php echo BASE_URL;?>usuarios" class="btn btn-light waves-effect waves-light">Regresar</a>
                             <button type="button" class="btn btn-success waves-effect waves-light" onclick="registrar_usuario();">Registrar</button>
                         </div>
                     </div>
