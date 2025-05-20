@@ -147,9 +147,13 @@ if ($tipo == "reiniciar_password") {
 }
 
 if ($tipo == "sent_email_password") {
-    $arr_Respuesta = array('status' =>false, 'msg' => 'Error_Sesion');
+    $arr_Respuesta = array('status' => false, 'msg' => 'Error_Sesion');
     if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
-        $datos_sesion = $objSesion->buscarSesionLoginById($id_sesion);
-        print_r($datos_sesion);
+       
+$datos_sesion = $objSesion->buscarSesionLoginById($id_sesion);
+$datos_usuario = $objUsuario->buscarUsuarioById($datos_sesion->id_usuario);
+
+print_r($datos_usuario);
+
     }
 }
