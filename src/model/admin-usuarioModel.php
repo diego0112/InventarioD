@@ -32,6 +32,11 @@ public function registrarUsuario($dni, $apellidos_nombres, $correo, $telefono, $
         return $sql;
     }
 
+    public function uptdateResetPassword($id,$token,$estado){
+        $sql = $this->conexion->query("UPDATE usuarios SET token_password ='$token', reset_password='$estado' WHERE id='$id'");
+        return $sql;
+    }
+
     public function buscarUsuarioById($id)
     {
         $sql = $this->conexion->query("SELECT * FROM usuarios WHERE id='$id'");
