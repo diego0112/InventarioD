@@ -70,22 +70,27 @@ async function cerrar_sesion() {
     }
 }
 
-async function sent_email_password(){
-    const datos = new FormData();
+    async function sent_email_password() {
+        const datos = new FormData();
+        datos.append('sesion', session_session);
+        datos.append('token', token_token);
 
-    datos.append('sesion', session_session);
-    datos.append('token', token_token);
+        try {
+            let respuesta = await fetch(base_url_server + 'src/control/Usuario.php?tipo=sent_email_password', {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                body: datos
+            });
 
-    try {
-        let respuesta = await fetch(base_url_server + 'src/control/Usuario.php?tipo=sent_email_password', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            body: datos
-        });
-        
-    } catch (error) {
-        
+            // Aquí puedes manejar la respuesta de la solicitud
+            let json = await respuesta.json();
+            console.log(json);
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
-}
+
+
 
