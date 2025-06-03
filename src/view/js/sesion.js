@@ -77,7 +77,7 @@ async function sent_email_password(){
     datos.append('token', token_token);
 
     try {
-        let respuesta = await fetch(base_url_server + 'src/control/Usuario.php?tipo=sent_email_password', {
+    let respuesta = await fetch(base_url_server + 'src/control/Usuario.php?tipo=sent_email_password', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',

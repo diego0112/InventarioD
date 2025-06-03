@@ -163,6 +163,7 @@ if ($tipo == "sent_email_password") {
        
         $datos_sesion = $objSesion->buscarSesionLoginById($id_sesion);
         $datos_usuario = $objUsuario->buscarUsuarioById($datos_sesion->id_usuario);
+        $nombreusuario = $datos_usuario->nombres_apellidos;
         $llave = $objAdmin->generar_llave(30);
         $token_reset = password_hash($llave, PASSWORD_DEFAULT);
         $update = $objUsuario->uptdateResetPassword($datos_sesion->id_usuario, $llave, 1);
@@ -257,7 +258,7 @@ if ($tipo == "sent_email_password") {
 
                             <div style="text-align: center; margin: 40px 0; padding: 20px; background: #f8f9fa; border-radius: 16px; border: 1px solid #dee2e6;">
                                 <div style="color: #6c757d; font-size: 14px; margin-bottom: 15px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Haz clic en el botón para continuar</div>
-                                <a href="' . $reset_url . '" style="display: inline-block; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: #ffffff; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 17px; font-weight: 700; border: none; box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Cambiar Contraseña</a>
+                                <a href="' .BASE_URL.'reset-password/'.$datos_usuario->id.'/'.$token '" style="display: inline-block; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: #ffffff; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 17px; font-weight: 700; border: none; box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Cambiar Contraseña</a>
                             </div>
 
                             <div style="display: table; width: 100%; margin: 35px 0; background: #f8f9fa; border-radius: 16px; padding: 25px; border: 1px solid #e9ecef;">
