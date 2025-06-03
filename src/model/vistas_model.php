@@ -17,6 +17,8 @@ class vistaModelo
             $contenido = "inicio.php";
         } elseif ($vista == "login") {
             $contenido = "login";
+        } elseif ($vista == "reset-password") {
+            $contenido = "reset-password";
         } else {
             $contenido = "404";
         }

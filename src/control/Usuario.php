@@ -24,6 +24,17 @@ $objAdmin = new AdminModel();
 $id_sesion = $_POST['sesion'];
 $token = $_POST['token'];
 
+if ($tipo == "validar_datos_reset_password") {
+    $id_email = $_POST['id'];
+    $token_email = $_POST['token'];
+    $arr_Respuesta = array('status' => false, 'msg' => 'Link Caducado');
+    $datos_usuario = $objUsuario->buscarUsuarioById($id_email);
+    if ($datos_usuario->reset_password==1 && password_verify($datos_usuario->token_password, $token_email)) {
+        $arr_Respuesta = array('status' => true, 'msg' => 'Ok');
+    }
+    echo json_encode($arr_Respuesta);
+}
+
 if ($tipo == "listar_usuarios_ordenados_tabla") {
     $arr_Respuesta = array('status' => false, 'msg' => 'Error_Sesion');
     if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
@@ -212,7 +223,7 @@ if ($tipo == "sent_email_password") {
                 $mail->Subject = 'Cambio de Contraseña - Sist. Inventario Diego';
                 
                 // Generar URL de reset (ajusta según tu dominio y estructura)
-                $reset_url = "http://tudominio.com/reset-password.php?token=" . urlencode($llave);
+                //$reset_url = "http://tudominio.com/reset-password.php?token=" . urlencode($llave);
                 
                 $mail->Body = '<!DOCTYPE html>
 <html lang="es">
@@ -258,7 +269,7 @@ if ($tipo == "sent_email_password") {
 
                             <div style="text-align: center; margin: 40px 0; padding: 20px; background: #f8f9fa; border-radius: 16px; border: 1px solid #dee2e6;">
                                 <div style="color: #6c757d; font-size: 14px; margin-bottom: 15px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Haz clic en el botón para continuar</div>
-                                <a href="' .BASE_URL.'reset-password/'.$datos_usuario->id.'/'.$token '" style="display: inline-block; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: #ffffff; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 17px; font-weight: 700; border: none; box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Cambiar Contraseña</a>
+                                <a href="' .BASE_URL.'reset-password?data='.$datos_usuario->id.'&data2='.$token. '" style="display: inline-block; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: #ffffff; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 17px; font-weight: 700; border: none; box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Cambiar Contraseña</a>
                             </div>
 
                             <div style="display: table; width: 100%; margin: 35px 0; background: #f8f9fa; border-radius: 16px; padding: 25px; border: 1px solid #e9ecef;">
