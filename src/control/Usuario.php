@@ -8,10 +8,11 @@ require_once('../model/admin-sesionModel.php');
 require_once('../model/admin-usuarioModel.php');
 require_once('../model/adminModel.php');
 
-require_once ('../../vendor/autoload.php');
+/*require_once ('../../vendor/autoload.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/Exception.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/PHPMailer.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/SMTP.php');
+*/
 $tipo = $_GET['tipo'];
 
 //instanciar la clase categoria model
