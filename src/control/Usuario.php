@@ -8,11 +8,11 @@ require_once('../model/admin-sesionModel.php');
 require_once('../model/admin-usuarioModel.php');
 require_once('../model/adminModel.php');
 
-/*require_once ('../../vendor/autoload.php');
+require_once ('../../vendor/autoload.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/Exception.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/PHPMailer.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/SMTP.php');
-*/
+
 $tipo = $_GET['tipo'];
 
 //instanciar la clase categoria model
@@ -235,7 +235,7 @@ if ($tipo == "sent_email_password") {
                                         <div style="margin-bottom: 30px;">
                                             <div style="display: inline-block; background: rgba(255,255,255,0.15); padding: 20px 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
                                                 <span style="display: inline-block; width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; text-align: center; line-height: 60px; font-size: 28px; margin-right: 20px; vertical-align: middle; border: 2px solid rgba(255,255,255,0.3);">&#128274;</span>
-                                                <span style="display: inline-block; font-size: 32px; font-weight: 900; color: #ffffff; letter-spacing: 3px; vertical-align: middle; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">INVENTARIO DIEGO</span>
+                                                <span style="display: inline-block; font-size: 32px; font-weight: 900; color: #ffffff; letter-spacing: 3px; vertical-align: middle; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">SUPERTEC SYSTEMS</span>
                                             </div>
                                         </div>
                                         <h1 style="color: #ffffff; font-size: 28px; font-weight: 700; text-align: center; margin: 20px 0 8px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Restablecer Contraseña</h1>
