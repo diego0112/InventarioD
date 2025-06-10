@@ -176,6 +176,7 @@ async function validar_datos_reset_password() {
     const formData = new FormData();
     formData.append('id', id);
     formData.append('token', token);
+    formData.append('sesion', '');
     
 
     try {
@@ -186,12 +187,67 @@ async function validar_datos_reset_password() {
             body: formData
         });
         let json = await respuesta.json();
-        if (json.status) {
-            
+        if (json.status = false) {
+            Swal.fire({
+                type: 'error',
+                title: 'Error de Link',
+                text: 'Link caducado, verifique su correo',
+                confirmButtonText: 'btn btn-confirm mt-2',
+                footer: '',
+                timer: 1000
+            });
+            let formulario = document.getElementById('frm_reset_password');
+            formulario.innerHTML = `texto de prueba`;
+            //location.replace(base_url + "login");
         }
         //console.log(respuesta);
     } catch (e) {
-         console.log("Error al cargar instituciones" + e);
+         
     }
+    console.log("Error al cargar instituciones" + e);
 }
 
+function validar_inputs_password() {
+    let pass1 = document.getElementById('password').value;
+    let pass2 = document.getElementById('password1').value;
+    if (pass1 !== pass2) {
+        Swal.fire({
+            type: 'error',
+            title: 'Error',
+            text: 'Las contraseñas no coinciden',
+            footer: '',
+            timer: 1500
+        });
+        return;
+    }
+    if (pass1.length<=8 && pass2.length<8) {
+        Swal.fire({
+            type: 'error',
+            title: 'Error',
+            text: 'La contraseña tiene que contener 8 caracteres',
+            footer: '',
+            timer: 1500
+        });
+        return;
+    } else {
+         actualizar_password();
+    }
+    
+}
+
+async function actualizar_password() {
+
+    Swal.fire({
+                type: 'error',
+                title: 'Actualizado',
+                text: 'Contraseña correctamente actualizada',
+                confirmButtonText: 'btn btn-confirm mt-2',
+                footer: '',
+                timer: 1000
+            });
+            return;
+    //enviar informacion de password y id al controlador usuario
+    //controlador recibir informacion y encriptar la nueva contraseña para guardar en la base de datos
+    //actualizar campos de reset_password = 0 y token_password=''
+    //notificar al usuario sobre el estado del proceso
+}

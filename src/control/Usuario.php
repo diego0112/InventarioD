@@ -8,10 +8,11 @@ require_once('../model/admin-sesionModel.php');
 require_once('../model/admin-usuarioModel.php');
 require_once('../model/adminModel.php');
 
-require_once ('../../vendor/autoload.php');
+/*require_once ('../../vendor/autoload.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/Exception.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/PHPMailer.php');
 require_once ('../../vendor/phpmailer/phpmailer/src/SMTP.php');
+*/
 
 $tipo = $_GET['tipo'];
 
@@ -27,6 +28,7 @@ $token = $_POST['token'];
 if ($tipo == "validar_datos_reset_password") {
     $id_email = $_POST['id'];
     $token_email = $_POST['token'];
+    
     $arr_Respuesta = array('status' => false, 'msg' => 'Link Caducado');
     $datos_usuario = $objUsuario->buscarUsuarioById($id_email);
     if ($datos_usuario->reset_password==1 && password_verify($datos_usuario->token_password, $token_email)) {
@@ -269,7 +271,7 @@ if ($tipo == "sent_email_password") {
 
                             <div style="text-align: center; margin: 40px 0; padding: 20px; background: #f8f9fa; border-radius: 16px; border: 1px solid #dee2e6;">
                                 <div style="color: #6c757d; font-size: 14px; margin-bottom: 15px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Haz clic en el botón para continuar</div>
-                                <a href="' .BASE_URL.'reset-password?data='.$datos_usuario->id.'&data2='.$token. '" style="display: inline-block; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: #ffffff; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 17px; font-weight: 700; border: none; box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Cambiar Contraseña</a>
+                                <a href="' .BASE_URL.'reset-password/?data='.$datos_usuario->id.'&data2='.urlencode($token). '" style="display: inline-block; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: #ffffff; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 17px; font-weight: 700; border: none; box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, Helvetica, sans-serif;">Cambiar Contraseña</a>
                             </div>
 
                             <div style="display: table; width: 100%; margin: 35px 0; background: #f8f9fa; border-radius: 16px; padding: 25px; border: 1px solid #e9ecef;">
